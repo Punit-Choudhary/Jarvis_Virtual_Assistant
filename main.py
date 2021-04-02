@@ -25,3 +25,31 @@ def wish():
     speak("Jarvis here! How can I help you?")
 
 
+def takeCommand():
+    '''Takes command/input from user's microphone'''
+
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening....")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+
+        try:
+            print("Recognizing...")
+            query = r.recognize_google(audio, language='en-in')
+            print(f"User said: {query}")
+        
+        except Exception as e:
+            print("Can you please say that again")
+            speak("Can you please say that again!")
+            return "None"
+    return query
+
+
+if __name__ == '__main__':
+        #to_speak = input("Enter text: ")
+        #peak(to_speak)
+        wish()
+        while True:
+            takeCommand()
+            time.sleep(2)
