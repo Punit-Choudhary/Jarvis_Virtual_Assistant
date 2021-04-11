@@ -3,6 +3,7 @@ import datetime
 import time
 import speech_recognition as sr
 import wikipedia
+import webbrowser
 
 
 engine = pyttsx3.init('sapi5')
@@ -23,7 +24,7 @@ def wish():
     else:
         speak("Good Evening sir!")
     
-    speak("Jarvis here! How can I help you?")
+    #speak("Jarvis here! How can I help you?")
 
 
 def takeCommand():
@@ -32,7 +33,7 @@ def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening....")
-        r.pause_threshold = 1
+        r.pause_threshold = 0.5
         audio = r.listen(source)
 
         try:
@@ -63,3 +64,10 @@ if __name__ == '__main__':
                     speak(results)
                 except:
                     speak("No result found on wikipedia!")
+            
+            # Youtube
+            elif 'open youtube' in query.lower():
+                speak("opening youtube")
+                time.sleep(1)
+                webbrowser.open("youtube.com")
+                speak("Youtube is here!")
