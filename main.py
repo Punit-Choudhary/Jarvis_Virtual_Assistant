@@ -4,11 +4,15 @@ import time
 import speech_recognition as sr
 import wikipedia
 import webbrowser
+import os
+import random
+
 
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
+
 
 def speak(audio):
     engine.say(audio)
@@ -24,7 +28,7 @@ def wish():
     else:
         speak("Good Evening sir!")
     
-    #speak("Jarvis here! How can I help you?")
+    speak("Jarvis here! How can I help you?")
 
 
 def takeCommand():
@@ -91,3 +95,11 @@ if __name__ == '__main__':
                 speak("opening stackoverflow")
                 webbrowser.open("stackoverflow.com")
                 speak("Stackoverflow is here!")
+            
+            elif 'play' in query.lower() and 'music' in query.lower():
+                music_dir = "D:\\music"
+                songs = os.listdir(music_dir)
+                song = random.randint(0, len(songs) - 1)
+                print(f"Playing {songs[song]}")
+                speak(f"Playing {songs[song]}")
+                os.startfile(os.path.join(music_dir, songs[song]))
