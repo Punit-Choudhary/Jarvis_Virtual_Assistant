@@ -108,3 +108,10 @@ if __name__ == '__main__':
                 str_time = datetime.datetime.now().strftime("%H:%M:%S")
                 print(f"time: {str_time}")
                 speak(f"Current time is {str_time}")
+            
+            elif 'open code' in query.lower():
+                speak("Opening your VS code editor")
+                vscode_path = r"C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+                os.startfile(vscode_path)
+                speak("Happy Hacking!")
+    
