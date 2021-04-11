@@ -85,3 +85,9 @@ if __name__ == '__main__':
                 time.sleep(1)
                 webbrowser.open("pragmaticprogrammer.in")
                 speak("Pragmatic Programmer's website is here.")
+
+            # Stack Overflow
+            elif 'open stack overflow' in query.lower():
+                speak("opening stackoverflow")
+                webbrowser.open("stackoverflow.com")
+                speak("Stackoverflow is here!")
