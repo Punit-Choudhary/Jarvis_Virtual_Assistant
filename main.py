@@ -53,10 +53,13 @@ if __name__ == '__main__':
             query = takeCommand()
             
             # Wikipedia
-            if 'wikipedia' in query:
+            if 'wikipedia' in query.lower():
                 speak("Searching wikipedia")
-
-                query = query.replace("wikipedia", "")
-                results = wikipedia.summary(query, sentences=2)
-                speak("According to wikipedia")
-                speak(results)
+                
+                try:
+                    query = query.replace("wikipedia", "")
+                    results = wikipedia.summary(query, sentences=2)
+                    speak("According to wikipedia")
+                    speak(results)
+                except:
+                    speak("No result found on wikipedia!")
