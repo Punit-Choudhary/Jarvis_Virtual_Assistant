@@ -71,3 +71,10 @@ if __name__ == '__main__':
                 time.sleep(1)
                 webbrowser.open("youtube.com")
                 speak("Youtube is here!")
+
+            # Google
+            elif 'open google' in query.lower():
+                speak("opening google")
+                time.sleep(1)
+                webbrowser.open("google.com")
+                speak("Google is here!")
