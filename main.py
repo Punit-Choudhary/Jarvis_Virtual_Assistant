@@ -103,3 +103,8 @@ if __name__ == '__main__':
                 print(f"Playing {songs[song]}")
                 speak(f"Playing {songs[song]}")
                 os.startfile(os.path.join(music_dir, songs[song]))
+            
+            elif 'the time' in query.lower():
+                str_time = datetime.datetime.now().strftime("%H:%M:%S")
+                print(f"time: {str_time}")
+                speak(f"Current time is {str_time}")
