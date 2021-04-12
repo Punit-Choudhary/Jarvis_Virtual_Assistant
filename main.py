@@ -1,5 +1,4 @@
 import pyttsx3
-import datetime
 import time
 import speech_recognition as sr
 import wikipedia
@@ -7,55 +6,14 @@ import webbrowser
 import os
 import random
 
-
-
-engine = pyttsx3.init('sapi5')
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
-
-
-def speak(audio):
-    engine.say(audio)
-    engine.runAndWait()
-
-def wish():
-    '''Wish to user, depending upon time!'''
-    hour = int(datetime.datetime.now().hour)
-    if hour >= 0 and hour < 12:
-        speak("Good Morning sir!")
-    elif hour >= 12 and hour < 18:
-        speak("Good Afternoon sir!")
-    else:
-        speak("Good Evening sir!")
-    
-    speak("Jarvis here! How can I help you?")
-
-
-def takeCommand():
-    '''Takes command/input from user's microphone'''
-
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Listening....")
-        r.pause_threshold = 0.5
-        audio = r.listen(source)
-
-        try:
-           print("Recognizing...")
-           query = r.recognize_google(audio, language='en-in')
-           print(f"User said: {query}")
-        
-        except Exception as e:
-           print("Can you please say that again")
-           speak("Can you please say that again!")
-           return "None"
-    return query
+import wish
+import voice
 
 
 if __name__ == '__main__':
-        wish()
+        voice.speak(wish.wish())
         while True:
-            query = takeCommand()
+            query = voice.takeCommand()
             
             # Wikipedia
             if 'wikipedia' in query.lower():
@@ -85,10 +43,10 @@ if __name__ == '__main__':
             
             # Pragmatic Programmer
             elif 'open pragmatic programmer' in query.lower():
-                speak("Opening your website")
+                voice.speak("Opening your website")
                 time.sleep(1)
                 webbrowser.open("pragmaticprogrammer.in")
-                speak("Pragmatic Programmer's website is here.")
+                voice.speak("Pragmatic Programmer's website is here.")
 
             # Stack Overflow
             elif 'open stack overflow' in query.lower():
