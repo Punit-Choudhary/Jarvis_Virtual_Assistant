@@ -7,6 +7,8 @@ import voice
 import websites
 import wiki
 import song
+import application
+
 
 if __name__ == '__main__':
         voice.speak(wish.wish())
@@ -28,9 +30,5 @@ if __name__ == '__main__':
                 print(f"time: {str_time}")
                 speak(f"Current time is {str_time}")
             
-            elif 'open code' in query.lower():
-                speak("Opening your VS code editor")
-                vscode_path = r"C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-                os.startfile(vscode_path)
-                speak("Happy Hacking!")
-    
+            elif 'start' in query.lower():
+                application.start(query)
