@@ -8,27 +8,20 @@ import random
 import wish
 import voice
 import websites
+import wiki
 
 if __name__ == '__main__':
         voice.speak(wish.wish())
         while True:
             query = voice.takeCommand()
             
-            # Wikipedia
-            if 'wikipedia' in query.lower():
-                speak("Searching wikipedia")
-                
-                try:
-                    query = query.replace("wikipedia", "")
-                    results = wikipedia.summary(query, sentences=2)
-                    speak("According to wikipedia")
-                    speak(results)
-                except:
-                    speak("No result found on wikipedia!")
             
-            elif 'open' in query.lower():
+            if 'open' in query.lower():
                 websites.open_website(query)
             
+            elif 'wikipedia' in query.lower():
+                wiki.search(query)
+
             elif 'play' in query.lower() and 'music' in query.lower():
                 music_dir = "D:\\music"
                 songs = os.listdir(music_dir)
