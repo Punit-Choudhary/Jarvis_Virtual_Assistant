@@ -2,13 +2,12 @@ import pyttsx3
 import time
 import speech_recognition as sr
 import wikipedia
-import webbrowser
 import os
 import random
 
 import wish
 import voice
-
+import websites
 
 if __name__ == '__main__':
         voice.speak(wish.wish())
@@ -27,32 +26,8 @@ if __name__ == '__main__':
                 except:
                     speak("No result found on wikipedia!")
             
-            # Youtube
-            elif 'open youtube' in query.lower():
-                speak("opening youtube")
-                time.sleep(1)
-                webbrowser.open("youtube.com")
-                speak("Youtube is here!")
-
-            # Google
-            elif 'open google' in query.lower():
-                speak("opening google")
-                time.sleep(1)
-                webbrowser.open("google.com")
-                speak("Google is here!")
-            
-            # Pragmatic Programmer
-            elif 'open pragmatic programmer' in query.lower():
-                voice.speak("Opening your website")
-                time.sleep(1)
-                webbrowser.open("pragmaticprogrammer.in")
-                voice.speak("Pragmatic Programmer's website is here.")
-
-            # Stack Overflow
-            elif 'open stack overflow' in query.lower():
-                speak("opening stackoverflow")
-                webbrowser.open("stackoverflow.com")
-                speak("Stackoverflow is here!")
+            elif 'open' in query.lower():
+                websites.open_website(query)
             
             elif 'play' in query.lower() and 'music' in query.lower():
                 music_dir = "D:\\music"
