@@ -8,7 +8,7 @@ import websites
 import wiki
 import song
 import application
-
+import 
 
 if __name__ == '__main__':
         voice.speak(wish.wish())
