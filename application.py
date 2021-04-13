@@ -48,3 +48,9 @@ def start(query):
         bluestack_path = r"C:\Program Files\BlueStacks\Bluestacks.exe"
         os.startfile(bluestack_path)
         voice.speak("Here comes your emulator!")
+    
+    # Discord
+    elif 'discord' in query.lower():
+        discord_path = r"C:\Users\Admin\AppData\Local\Discord\Update.exe --processStart Discord.exe"
+        os.startfile(discord_path)
+        voice.speak("Here you go...")
