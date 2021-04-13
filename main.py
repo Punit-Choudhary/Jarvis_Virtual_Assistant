@@ -9,6 +9,7 @@ import wiki
 import song
 import application
 import weather
+import news
 
 if __name__ == '__main__':
         voice.speak(wish.wish())
@@ -35,3 +36,7 @@ if __name__ == '__main__':
             
             elif 'weather' in query.lower():
                 weather.fetch_weather()
+            
+            elif 'news' in query.lower():
+                news.get_news()
+                
