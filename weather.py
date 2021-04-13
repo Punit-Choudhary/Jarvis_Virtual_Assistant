@@ -2,11 +2,14 @@
 
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
 import voice
 
-api_key = "e1bfa447b22305193e714f01ea703002"
+load_dotenv()
 
+api_key = os.getenv('W_KEY')   # Add your API key here
 base_url = "https://api.openweathermap.org/data/2.5/weather?"
 
 city_name = "Kotputli,IN"
@@ -31,7 +34,7 @@ def fetch_weather():
         voice.speak(f"""Today's Weather details for {city_name} are,
                       Weather is {weather_description}, 
                       Temprature is {current_temp} kelvin,
-                      {current_pressure} atmospheric pressure and
-                      humidity is {current_humidity} percent""")
+                      {current_pressure} atmospheric pressure
+                      and humidity is {current_humidity} percent""")
     else:
         voice.speak(f"I am unable to fetch weather details for {city_name}")
