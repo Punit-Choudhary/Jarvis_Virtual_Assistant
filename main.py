@@ -1,6 +1,7 @@
 import pyttsx3
 import time
 import speech_recognition as sr
+import pyjokes
 
 import wish
 import voice
@@ -10,6 +11,7 @@ import song
 import application
 import weather
 import news
+import misc
 
 if __name__ == '__main__':
         voice.speak(wish.wish())
@@ -25,12 +27,7 @@ if __name__ == '__main__':
 
             elif 'play' in query.lower() and 'music' in query.lower():
                 song.play()
-            
-            elif 'the time' in query.lower():
-                str_time = datetime.datetime.now().strftime("%H:%M:%S")
-                print(f"time: {str_time}")
-                speak(f"Current time is {str_time}")
-            
+
             elif 'start' in query.lower():
                 application.start(query)
             
@@ -39,4 +36,6 @@ if __name__ == '__main__':
             
             elif 'news' in query.lower():
                 news.get_news()
-                
+            
+            else:
+                misc.misc(query)
