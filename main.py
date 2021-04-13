@@ -37,5 +37,5 @@ if __name__ == '__main__':
             elif 'news' in query.lower():
                 news.get_news()
             
-            else:
+            elif 'None' not in query:
                 misc.misc(query)
