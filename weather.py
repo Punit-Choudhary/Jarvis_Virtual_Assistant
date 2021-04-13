@@ -13,25 +13,25 @@ city_name = "Kotputli,IN"
 
 complete_url = base_url + "q=" + city_name + "&APPID=" + api_key
 
-response = requests.get(complete_url)
+def fetch_weather():
+    response = requests.get(complete_url)
+    resp = response.json()
 
-resp = response.json()
+    if resp['cod'] != '404':
+        main = resp["main"]
 
-if resp['cod'] != '404':
-    main = resp["main"]
+        current_temp = main["temp"]
+        current_pressure = main["pressure"]
+        current_humidity = main["humidity"]
 
-    current_temp = main["temp"]
-    current_pressure = main["pressure"]
-    current_humidity = main["humidity"]
+        weather = resp["weather"]
 
-    weather = resp["weather"]
-    
-    weather_description = weather[0]["description"]
+        weather_description = weather[0]["description"]
 
-    voice.speak(f"Today's Weather details for {city_name} are,
-                  Weather is {weather_description}, 
-                  Temprature is {current_temp} kelvin,
-                  {current_pressure} atmospheric pressure and
-                  humidity is {current_humidity} percent")
-else:
-    voice.speak(f"I am unable to fetch weather details for {city_name}")
+        voice.speak(f"""Today's Weather details for {city_name} are,
+                      Weather is {weather_description}, 
+                      Temprature is {current_temp} kelvin,
+                      {current_pressure} atmospheric pressure and
+                      humidity is {current_humidity} percent""")
+    else:
+        voice.speak(f"I am unable to fetch weather details for {city_name}")
